@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Success_Code",
+    "slug": "Success_Code",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
