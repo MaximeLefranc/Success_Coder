@@ -7,7 +7,7 @@ const COURSES = [
     description:
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!',
     image:
-      'https://cdn.pixabay.com/photo/2020/08/22/23/29/content-marketing-5509584_960_720.png',
+      'https://cdn.pixabay.com/photo/2018/05/16/20/36/coming-soon-3406977_1280.jpg',
     price: 99.99,
     selected: false,
     instructorId: '1',
@@ -18,7 +18,7 @@ const COURSES = [
     description:
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!',
     image:
-      'https://cdn.pixabay.com/photo/2020/11/23/22/06/facebook-5771058_960_720.png',
+      'https://cdn.pixabay.com/photo/2018/05/18/03/16/online-3410266_1280.jpg',
     price: 49.99,
     selected: false,
     instructorId: '1',
@@ -29,7 +29,7 @@ const COURSES = [
     description:
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, consequatur dolor sequi provident possimus sed ad qui ipsum similique odio iste molestias praesentium nemo ut facere, consectetur error in voluptate!',
     image:
-      'https://cdn.pixabay.com/photo/2021/02/15/20/38/software-6019023_960_720.png',
+      'https://cdn.pixabay.com/photo/2018/05/16/18/08/e-commerce-3406613_1280.jpg',
     price: 29.49,
     selected: false,
     instructorId: '1',
