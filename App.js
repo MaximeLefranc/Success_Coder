@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 // React & React-Native
 import { StatusBar, View } from 'react-native';
 import { useCallback } from 'react';
@@ -5,6 +7,9 @@ import { useCallback } from 'react';
 // Redux & Store
 import { Provider } from 'react-redux';
 import store from './redux/store';
+
+// Navigation / Routes
+import RootNav from './routes/RootNav';
 
 // SplashScreen
 import * as SplashScreen from 'expo-splash-screen';
@@ -18,8 +23,8 @@ import PoppinsLight from './assets/fonts/Poppins-Light.ttf';
 import PoppinsItalic from './assets/fonts/Poppins-Italic.ttf';
 import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
 
-// Component
-import Landing from './screens/Landing';
+// Style
+import globalStyles from './styles/globalStyles';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,10 +47,10 @@ export default function App() {
   }
 
   return (
-    <View onLayout={onLayoutRootView}>
+    <View onLayout={onLayoutRootView} style={globalStyles.body}>
       <Provider store={store}>
         <StatusBar />
-        <Landing />
+        <RootNav />
       </Provider>
     </View>
   );

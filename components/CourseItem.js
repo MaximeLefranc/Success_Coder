@@ -5,7 +5,6 @@ import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 // Style
-import globalStyles from '../styles/globalStyles';
 import Colors from '../styles/Colors';
 import TouchableIcon from './TouchableIcon';
 

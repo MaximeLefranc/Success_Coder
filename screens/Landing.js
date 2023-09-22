@@ -1,5 +1,5 @@
 // Reac-Native
-import { FlatList, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 // Redux
 import { useSelector } from 'react-redux';
@@ -8,7 +8,10 @@ import { useSelector } from 'react-redux';
 import CourseItem from '../components/CourseItem';
 import NoData from '../components/NoData';
 
-const Landing = () => {
+// PropTypes
+import PropTypes from 'prop-types';
+
+const Landing = ({ navigation }) => {
   const existingCourses = useSelector((state) => state.courses.existingCourses);
 
   if (!existingCourses.length) {
@@ -23,12 +26,18 @@ const Landing = () => {
           image={item.image}
           price={item.price}
           title={item.title}
-          viewDetails={() => alert('Détails')}
+          viewDetails={() =>
+            navigation.navigate('Details', { courseId: item.id })
+          }
           onAddToCart={() => alert('Panier')}
         />
       )}
     />
   );
+};
+
+Landing.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 export default Landing;
