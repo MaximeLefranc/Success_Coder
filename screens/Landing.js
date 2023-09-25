@@ -27,7 +27,10 @@ const Landing = ({ navigation }) => {
           price={item.price}
           title={item.title}
           viewDetails={() =>
-            navigation.navigate('Details', { courseId: item.id })
+            navigation.navigate('Details', {
+              courseId: item.id,
+              title: item.title,
+            })
           }
           onAddToCart={() => alert('Panier')}
         />
