@@ -9,7 +9,10 @@ import {
 } from 'react-native';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Actions Creators
+import { actionAddToCart } from '../redux/actions/actionsCart';
 
 // Icons
 import { Ionicons } from '@expo/vector-icons';
@@ -22,12 +25,21 @@ import Colors from '../styles/Colors';
 import CustomButton from '../components/CustomButton';
 
 const CourseInfos = ({ route, navigation }) => {
+  const dispatch = useDispatch();
   const { courseId } = route.params;
   const selectedCourse = useSelector((state) =>
     state.courses.existingCourses.find(
       (currentCourse) => currentCourse.id === courseId
     )
   );
+
+  const handleAddToCart = () => {
+    dispatch(actionAddToCart(selectedCourse));
+    navigation.goBack();
+    alert(
+      `La formation '${selectedCourse.title}' a bien été ajoutée au panier 🛒`
+    );
+  };
 
   return (
     <>
@@ -60,7 +72,7 @@ const CourseInfos = ({ route, navigation }) => {
           />
           <CustomButton
             textButton="Ajouter au panier"
-            handler={() => alert('Ajouter au panier')}
+            handler={handleAddToCart}
           />
         </View>
       </View>

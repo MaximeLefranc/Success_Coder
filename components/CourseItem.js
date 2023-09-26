@@ -23,7 +23,7 @@ const CourseItem = ({ image, price, title, viewDetails, onAddToCart }) => {
       </View>
       <View style={styles.detailsContainer}>
         <Text style={styles.courseTitle}>{title}</Text>
-        <Text style={styles.coursePrice}>{price.toFixed(2) + ' €'}</Text>
+        <Text style={styles.coursePrice}>{price.toFixed(2)} €</Text>
       </View>
       <View style={styles.iconsContainer}>
         <TouchableIcon

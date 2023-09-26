@@ -2,17 +2,26 @@
 import { FlatList } from 'react-native';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import CourseItem from '../components/CourseItem';
 import NoData from '../components/NoData';
 
+// Actions
+import { actionAddToCart } from '../redux/actions/actionsCart';
+
 // PropTypes
 import PropTypes from 'prop-types';
 
 const Landing = ({ navigation }) => {
+  const dispatch = useDispatch();
   const existingCourses = useSelector((state) => state.courses.existingCourses);
+
+  const handleAddToCart = (course) => {
+    dispatch(actionAddToCart(course));
+    alert(`La formation '${course.title}' a bien été ajoutée au panier 🛒`);
+  };
 
   if (!existingCourses.length) {
     return <NoData message="Nous n'avons plus de cours pour le moment 🙁" />;
@@ -32,7 +41,7 @@ const Landing = ({ navigation }) => {
               title: item.title,
             })
           }
-          onAddToCart={() => alert('Panier')}
+          onAddToCart={() => handleAddToCart(item)}
         />
       )}
     />
