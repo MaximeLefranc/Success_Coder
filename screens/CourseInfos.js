@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginHorizontal: 20,
     marginVertical: 10,
+    fontFamily: 'PoppinsRegular',
   },
   footerContainer: {
     height: '20%',
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
   coursePrice: {
     fontSize: 24,
     color: Colors.green,
+    fontFamily: 'PoppinsBold',
   },
   footerBottom: {
     backgroundColor: Colors.green,

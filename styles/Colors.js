@@ -5,4 +5,5 @@ export default {
   darkGrey: '#333',
   dimGrey: 'dimgray',
   lightOrange: 'moccasin',
+  orange: 'orange',
 };

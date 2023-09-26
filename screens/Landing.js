@@ -17,19 +17,22 @@ import PropTypes from 'prop-types';
 const Landing = ({ navigation }) => {
   const dispatch = useDispatch();
   const existingCourses = useSelector((state) => state.courses.existingCourses);
+  const disponibleCourses = existingCourses.filter(
+    (course) => !course.selected
+  );
 
   const handleAddToCart = (course) => {
     dispatch(actionAddToCart(course));
     alert(`La formation '${course.title}' a bien été ajoutée au panier 🛒`);
   };
 
-  if (!existingCourses.length) {
+  if (!disponibleCourses.length) {
     return <NoData message="Nous n'avons plus de cours pour le moment 🙁" />;
   }
 
   return (
     <FlatList
-      data={existingCourses}
+      data={disponibleCourses}
       renderItem={({ item }) => (
         <CourseItem
           image={item.image}

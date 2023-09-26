@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 19,
+    fontFamily: 'PoppinsRegular',
   },
 });
 
