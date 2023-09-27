@@ -1,5 +1,5 @@
 // Actions Types
-import { ADD_TO_CART } from '../actions/actionsCart';
+import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
 
 // Class CartCourse
 import CartCourse from '../../data/paidCourseModel';
@@ -18,6 +18,19 @@ const reducerCart = (state = initialState, action) => {
         ...state,
         cartCourses: [newCartCourse, ...state.cartCourses],
         total: state.total + price,
+      };
+    }
+    case REMOVE_TO_CART: {
+      const indexCourseToRemove = state.cartCourses.findIndex(
+        (course) => course.id === action.payload
+      );
+      const newCartCoursesArray = [...state.cartCourses];
+      newCartCoursesArray.splice(indexCourseToRemove, 1);
+
+      return {
+        ...state,
+        cartCourses: newCartCoursesArray,
+        total: state.total - state.cartCourses[indexCourseToRemove].price,
       };
     }
 

@@ -1,8 +1,9 @@
 // DATA
 import COURSES from '../../data/testData';
+import { toggleSelectedExistingCourses } from '../../utils/functions';
 
 // Actions
-import { ADD_TO_CART } from '../actions/actionsCart';
+import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
 
 const initialState = {
   existingCourses: COURSES,
@@ -11,14 +12,25 @@ const initialState = {
 const reducerCourses = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-      const indexCourseToModify = state.existingCourses.findIndex(
-        (course) => course.id === action.payload.id
+      const newArrayToSave = toggleSelectedExistingCourses(
+        action.payload.id,
+        state.existingCourses,
+        true
       );
-      const copyExistingCourses = [...state.existingCourses];
-      copyExistingCourses[indexCourseToModify].selected = true;
       return {
         ...state,
-        existingCourses: copyExistingCourses,
+        existingCourses: newArrayToSave,
+      };
+    }
+    case REMOVE_TO_CART: {
+      const newArrayToSave = toggleSelectedExistingCourses(
+        action.payload,
+        state.existingCourses,
+        false
+      );
+      return {
+        ...state,
+        existingCourses: newArrayToSave,
       };
     }
 

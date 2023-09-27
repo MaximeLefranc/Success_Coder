@@ -8,7 +8,10 @@ import {
 } from 'react-native';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+// Actions Creators
+import { actionRemoveToCart } from '../redux/actions/actionsCart';
 
 // Components
 import NoData from '../components/NoData';
@@ -16,6 +19,7 @@ import CourseInCart from '../components/CourseInCart';
 import Colors from '../styles/Colors';
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const cartCourses = useSelector((state) => state.cart.cartCourses);
   const total = useSelector((state) => state.cart.total);
 
@@ -30,7 +34,7 @@ const Cart = () => {
           <CourseInCart
             title={item.title}
             price={item.price}
-            onDelete={() => alert('Éffacer ce cour')}
+            onDelete={() => dispatch(actionRemoveToCart(item.id))}
           />
         )}
       />
