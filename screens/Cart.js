@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Actions Creators
 import { actionRemoveToCart } from '../redux/actions/actionsCart';
+import { actionAddPayment } from '../redux/actions/actionsPayment';
 
 // Components
 import NoData from '../components/NoData';
@@ -22,6 +23,11 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartCourses = useSelector((state) => state.cart.cartCourses);
   const total = useSelector((state) => state.cart.total);
+
+  const handlePayment = (courses, total) => {
+    dispatch(actionAddPayment(cartCourses, total));
+    alert('Paiement effectué.');
+  };
 
   if (!cartCourses.length) {
     return <NoData message="Panier Vide" />;
@@ -44,7 +50,7 @@ const Cart = () => {
           Total:
           <Text style={styles.totalPrice}> {total.toFixed(2)} €</Text>
         </Text>
-        <TouchableOpacity onPress={() => alert('Payer')}>
+        <TouchableOpacity onPress={() => handlePayment(cartCourses, total)}>
           <View style={styles.btnAddPayment}>
             <Text style={styles.btnAddPaymentText}>Payer</Text>
           </View>

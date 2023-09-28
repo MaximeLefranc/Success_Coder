@@ -1,8 +1,9 @@
 // Actions Types
 import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
+import { ADD_PAYMENT } from '../actions/actionsPayment';
 
 // Class CartCourse
-import CartCourse from '../../data/paidCourseModel';
+import CartCourse from '../../data/PaidCourseModel';
 
 const initialState = {
   cartCourses: [],
@@ -31,6 +32,12 @@ const reducerCart = (state = initialState, action) => {
         ...state,
         cartCourses: newCartCoursesArray,
         total: state.total - state.cartCourses[indexCourseToRemove].price,
+      };
+    }
+    case ADD_PAYMENT: {
+      return {
+        cartCourses: [],
+        total: 0,
       };
     }
 

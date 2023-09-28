@@ -49,7 +49,7 @@ export default function App() {
   return (
     <View onLayout={onLayoutRootView} style={globalStyles.body}>
       <Provider store={store}>
-        <StatusBar />
+        <StatusBar style="light" translucent backgroundColor="transparent" />
         <RootNav />
       </Provider>
     </View>
