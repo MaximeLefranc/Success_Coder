@@ -6,6 +6,10 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import { useEffect } from 'react';
+
+// React Navigation Native Buttons
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,8 +22,12 @@ import { actionAddPayment } from '../redux/actions/actionsPayment';
 import NoData from '../components/NoData';
 import CourseInCart from '../components/CourseInCart';
 import Colors from '../styles/Colors';
+import CustomHeaderIcon from '../components/CustomHeaderIcon';
 
-const Cart = () => {
+// PropTypes
+import PropTypes from 'prop-types';
+
+const Cart = ({ navigation }) => {
   const dispatch = useDispatch();
   const cartCourses = useSelector((state) => state.cart.cartCourses);
   const total = useSelector((state) => state.cart.total);
@@ -28,6 +36,20 @@ const Cart = () => {
     dispatch(actionAddPayment(cartCourses, total));
     alert('Paiement effectué.');
   };
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderIcon}>
+          <Item
+            title="Home"
+            iconName="ios-home-outline"
+            onPress={() => navigation.navigate('Home')}
+          />
+        </HeaderButtons>
+      ),
+    });
+  }, []);
 
   if (!cartCourses.length) {
     return <NoData message="Panier Vide" />;
@@ -58,6 +80,10 @@ const Cart = () => {
       </View>
     </View>
   );
+};
+
+Cart.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

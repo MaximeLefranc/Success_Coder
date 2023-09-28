@@ -2,12 +2,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 
 // Different Navigations
-import CoursesStackNav from './CoursesStackNav';
+import DrawerNav from './DrawerNav';
 
 const RootNav = () => {
   return (
     <NavigationContainer>
-      <CoursesStackNav />
+      <DrawerNav />
     </NavigationContainer>
   );
 };

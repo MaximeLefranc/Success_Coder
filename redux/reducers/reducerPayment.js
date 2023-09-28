@@ -2,7 +2,7 @@
 import { ADD_PAYMENT } from '../actions/actionsPayment';
 
 // Model
-import PaymentModel from '../../data/paymentModel';
+import PaymentModel from '../../data/PaymentModel';
 
 // Moment
 import moment from 'moment';
