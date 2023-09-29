@@ -13,7 +13,11 @@ const CoursesStackNavigator = createStackNavigator();
 const CoursesStackNav = () => {
   return (
     <CoursesStackNavigator.Navigator screenOptions={defaultStyleNav}>
-      <CoursesStackNavigator.Screen name="Landing" component={Landing} />
+      <CoursesStackNavigator.Screen
+        name="Landing"
+        component={Landing}
+        options={{ headerTitle: 'Catalogue' }}
+      />
       <CoursesStackNavigator.Screen
         name="Details"
         component={CourseInfos}
