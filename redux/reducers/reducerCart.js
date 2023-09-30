@@ -46,10 +46,8 @@ const reducerCart = (state = initialState, action) => {
         (course) => course.id === action.payload
       );
       const newCartCourses = [...state.cartCourses];
-      const newTotal = state.total;
-      if (indexCourseToDelete !== ) {
-        //! WIP
-        console.log('Je suis dans le if');
+      let newTotal = state.total;
+      if (indexCourseToDelete >= 0) {
         newCartCourses.splice(indexCourseToDelete, 1);
         newTotal = newTotal - state.cartCourses[indexCourseToDelete].price;
       }
