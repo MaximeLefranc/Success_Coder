@@ -1,7 +1,8 @@
 // React & React Native
 import { View, Text, StyleSheet } from 'react-native';
 
-const UserEditCourse = () => {
+const UserEditCourse = ({ route }) => {
+  console.log(route.params);
   return (
     <View>
       <Text>Modifier ou créer une formation</Text>

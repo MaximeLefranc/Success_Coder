@@ -1,6 +1,7 @@
 // Actions Types
 import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
 import { ADD_PAYMENT } from '../actions/actionsPayment';
+import { DELETE_COURSE } from '../actions/actionCourses';
 
 // Class CartCourse
 import CartCourse from '../../data/PaidCourseModel';
@@ -38,6 +39,24 @@ const reducerCart = (state = initialState, action) => {
       return {
         cartCourses: [],
         total: 0,
+      };
+    }
+    case DELETE_COURSE: {
+      const indexCourseToDelete = state.cartCourses.findIndex(
+        (course) => course.id === action.payload
+      );
+      const newCartCourses = [...state.cartCourses];
+      const newTotal = state.total;
+      if (indexCourseToDelete !== ) {
+        //! WIP
+        console.log('Je suis dans le if');
+        newCartCourses.splice(indexCourseToDelete, 1);
+        newTotal = newTotal - state.cartCourses[indexCourseToDelete].price;
+      }
+      return {
+        ...state,
+        cartCourses: newCartCourses,
+        total: newTotal,
       };
     }
 

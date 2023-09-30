@@ -10,7 +10,7 @@ const COURSES = [
       'https://cdn.pixabay.com/photo/2018/05/16/20/36/coming-soon-3406977_1280.jpg',
     price: 99.99,
     selected: false,
-    instructorId: '1',
+    instructorId: '2',
   },
   {
     id: '2',
@@ -32,7 +32,7 @@ const COURSES = [
       'https://cdn.pixabay.com/photo/2018/05/16/18/08/e-commerce-3406613_1280.jpg',
     price: 29.49,
     selected: false,
-    instructorId: '1',
+    instructorId: '3',
   },
   {
     id: '4',
@@ -54,7 +54,7 @@ const COURSES = [
       'https://cdn.pixabay.com/photo/2018/05/16/19/21/working-3406785_1280.jpg',
     price: 199.99,
     selected: false,
-    instructorId: '1',
+    instructorId: '3',
   },
   {
     id: '6',
@@ -87,7 +87,7 @@ const COURSES = [
       'https://cdn.pixabay.com/photo/2018/05/17/15/10/social-3408791_1280.jpg',
     price: 19.49,
     selected: false,
-    instructorId: '1',
+    instructorId: '4',
   },
   {
     id: '9',
