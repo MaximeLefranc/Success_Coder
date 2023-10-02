@@ -1,7 +1,7 @@
 // Actions Types
 import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
 import { ADD_PAYMENT } from '../actions/actionsPayment';
-import { DELETE_COURSE } from '../actions/actionCourses';
+import { DELETE_COURSE, EDIT_COURSE } from '../actions/actionCourses';
 
 // Class CartCourse
 import CartCourse from '../../data/PaidCourseModel';
@@ -54,6 +54,32 @@ const reducerCart = (state = initialState, action) => {
       return {
         ...state,
         cartCourses: newCartCourses,
+        total: newTotal,
+      };
+    }
+    case EDIT_COURSE: {
+      const { courseId, price, title } = action.payload;
+      const indexCourseToUpdate = state.cartCourses.findIndex(
+        (course) => course.id === courseId
+      );
+      const newCartCourse = [...state.cartCourses];
+      let newTotal = state.total;
+      if (indexCourseToUpdate >= 0) {
+        newCartCourse[indexCourseToUpdate] = new CartCourse(
+          courseId,
+          price,
+          title
+        );
+        const newPrice = state.cartCourses[indexCourseToUpdate].price - price;
+        if (newPrice >= 0) {
+          newTotal = newTotal - newPrice;
+        } else {
+          newTotal = newTotal + -newPrice;
+        }
+      }
+      return {
+        ...state,
+        cartCourses: newCartCourse,
         total: newTotal,
       };
     }

@@ -10,12 +10,16 @@ import {
 } from 'react-native';
 
 // Redux
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+// ACtions Creators
+import { actionEditCourse } from '../redux/actions/actionCourses';
 
 // Colors
 import Colors from '../styles/Colors';
 
 const UserEditCourse = ({ route }) => {
+  const dispatch = useDispatch();
   const { courseId } = route.params;
 
   const myCourse = useSelector((state) =>
@@ -26,6 +30,18 @@ const UserEditCourse = ({ route }) => {
   const [image, setImage] = useState(myCourse ? myCourse.image : '');
   const [price, setPrice] = useState(myCourse ? myCourse.price.toString() : '');
   const [desc, setDesc] = useState(myCourse ? myCourse.description : '');
+
+  const handleSubmitForm = () => {
+    if (courseId) {
+      // Update
+      dispatch(actionEditCourse(courseId, title, image, desc, Number(price)));
+      alert('Mise à jour');
+    } else {
+      // Create
+      //dispatch();
+      alert('Création');
+    }
+  };
 
   return (
     <ScrollView>
@@ -64,7 +80,7 @@ const UserEditCourse = ({ route }) => {
             multiline
           />
         </View>
-        <TouchableOpacity onPress={() => alert('Valider')}>
+        <TouchableOpacity onPress={handleSubmitForm}>
           <View style={styles.btnContainer}>
             <Text style={styles.btnText}>Valider</Text>
           </View>

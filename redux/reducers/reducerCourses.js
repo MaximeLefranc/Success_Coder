@@ -1,10 +1,15 @@
 // DATA
 import COURSES from '../../data/testData';
-import { toggleSelectedExistingCourses } from '../../utils/functions';
-import { DELETE_COURSE } from '../actions/actionCourses';
 
 // Actions
 import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
+import { DELETE_COURSE, EDIT_COURSE } from '../actions/actionCourses';
+
+// Utils
+import { toggleSelectedExistingCourses } from '../../utils/functions';
+
+// Models
+import CourseModel from '../../data/CourseModel';
 
 const initialState = {
   existingCourses: COURSES,
@@ -47,6 +52,35 @@ const reducerCourses = (state = initialState, action) => {
           (course) => course.id !== action.payload
         ),
       };
+    case EDIT_COURSE: {
+      const { courseId, title, img, desc, price } = action.payload;
+      const indexCourseToUpdate = state.loggedInMemberCourses.findIndex(
+        (course) => course.id === courseId
+      );
+      const courseToUpdate = state.loggedInMemberCourses[indexCourseToUpdate];
+      const updatedCourse = new CourseModel(
+        courseId,
+        title,
+        desc,
+        img,
+        price,
+        courseToUpdate.selected,
+        courseToUpdate.instructorId
+      );
+      const newLoggedInMemberCourses = [...state.loggedInMemberCourses];
+      newLoggedInMemberCourses[indexCourseToUpdate] = updatedCourse;
+
+      const indexExistingCourses = state.existingCourses.findIndex(
+        (course) => course.id === courseId
+      );
+      const newExistingCourses = [...state.existingCourses];
+      newExistingCourses[indexExistingCourses] = updatedCourse;
+      return {
+        ...state,
+        existingCourses: newExistingCourses,
+        loggedInMemberCourses: newLoggedInMemberCourses,
+      };
+    }
 
     default:
       return state;
