@@ -21,6 +21,7 @@ const UserCourses = ({ navigation }) => {
   if (!loggedInMemberCourses.length) {
     return <NoData message="Pas de cours à afficher" />;
   }
+  console.table(loggedInMemberCourses);
   return (
     <FlatList
       data={loggedInMemberCourses}

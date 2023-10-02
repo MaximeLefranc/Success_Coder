@@ -3,7 +3,11 @@ import COURSES from '../../data/testData';
 
 // Actions
 import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/actionsCart';
-import { DELETE_COURSE, EDIT_COURSE } from '../actions/actionCourses';
+import {
+  CREATE_COURSE,
+  DELETE_COURSE,
+  EDIT_COURSE,
+} from '../actions/actionCourses';
 
 // Utils
 import { toggleSelectedExistingCourses } from '../../utils/functions';
@@ -79,6 +83,23 @@ const reducerCourses = (state = initialState, action) => {
         ...state,
         existingCourses: newExistingCourses,
         loggedInMemberCourses: newLoggedInMemberCourses,
+      };
+    }
+    case CREATE_COURSE: {
+      const { title, img, desc, price } = action.payload;
+      const newCourse = new CourseModel(
+        Date.now().toString(),
+        title,
+        desc,
+        img,
+        price,
+        false,
+        '1'
+      );
+      return {
+        ...state,
+        existingCourses: [...state.existingCourses, newCourse],
+        loggedInMemberCourses: [...state.loggedInMemberCourses, newCourse],
       };
     }
 

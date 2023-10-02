@@ -12,13 +12,19 @@ import {
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 
-// ACtions Creators
-import { actionEditCourse } from '../redux/actions/actionCourses';
+// Actions Creators
+import {
+  actionCreateCourse,
+  actionEditCourse,
+} from '../redux/actions/actionCourses';
 
 // Colors
 import Colors from '../styles/Colors';
 
-const UserEditCourse = ({ route }) => {
+// PropTypes
+import PropTypes from 'prop-types';
+
+const UserEditCourse = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const { courseId } = route.params;
 
@@ -36,10 +42,12 @@ const UserEditCourse = ({ route }) => {
       // Update
       dispatch(actionEditCourse(courseId, title, image, desc, Number(price)));
       alert('Mise à jour');
+      navigation.goBack();
     } else {
       // Create
-      //dispatch();
-      alert('Création');
+      dispatch(actionCreateCourse(title, image, desc, Number(price)));
+      alert("Céation d'un nouveau cours");
+      navigation.goBack();
     }
   };
 
@@ -88,6 +96,15 @@ const UserEditCourse = ({ route }) => {
       </View>
     </ScrollView>
   );
+};
+
+UserEditCourse.propTypes = {
+  route: PropTypes.shape({
+    params: PropTypes.shape({
+      courseId: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+  navigation: PropTypes.object.isRequired,
 };
 
 const styles = StyleSheet.create({

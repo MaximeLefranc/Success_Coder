@@ -4,6 +4,7 @@
 
 export const DELETE_COURSE = 'DELETE_COURSE';
 export const EDIT_COURSE = 'EDIT_COURSE';
+export const CREATE_COURSE = 'CREATE_COURSE';
 
 /*=====================================
 ===========ACTIONS CREATORS============
@@ -35,6 +36,26 @@ export const actionEditCourse = (courseId, title, img, desc, price) => {
     type: EDIT_COURSE,
     payload: {
       courseId,
+      title,
+      img,
+      desc,
+      price,
+    },
+  };
+};
+
+/**
+ * Create a new course
+ * @param {String} title
+ * @param {String} img URL
+ * @param {String} desc
+ * @param {Number} price
+ * @returns {{}} Action Object
+ */
+export const actionCreateCourse = (title, img, desc, price) => {
+  return {
+    type: CREATE_COURSE,
+    payload: {
       title,
       img,
       desc,
