@@ -1,12 +1,6 @@
 // React & React Native
 import { useReducer } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +16,7 @@ import {
 
 // Components
 import Input from '../components/Input';
+import BtnForm from '../components/BtnForm';
 
 // Colors
 import Colors from '../styles/Colors';
@@ -108,11 +103,16 @@ const UserEditCourse = ({ route, navigation }) => {
           multiline
           numberOfLines={5}
         />
-        <TouchableOpacity onPress={handleSubmitForm}>
-          <View style={styles.btnContainer}>
-            <Text style={styles.btnText}>Valider</Text>
-          </View>
-        </TouchableOpacity>
+
+        <BtnForm
+          handlePress={handleSubmitForm}
+          btnText={
+            formState.isValidForm
+              ? 'Valider'
+              : 'Veuillez remplir tous les champs'
+          }
+          activate={!formState.isValidForm}
+        />
       </View>
     </ScrollView>
   );
@@ -133,18 +133,6 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     padding: 20,
     margin: 20,
-  },
-  btnContainer: {
-    borderRadius: 6,
-    paddingVertical: 9,
-    paddingHorizontal: 25,
-    backgroundColor: Colors.orange,
-    marginTop: 20,
-  },
-  btnText: {
-    fontSize: 19,
-    fontFamily: 'PoppinsRegular',
-    textAlign: 'center',
   },
 });
 

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import Colors from '../styles/Colors';
 
 const Input = (props) => {
-  console.log(props);
   return (
     <View style={styles.formControl}>
       <Text style={styles.label}>{props.label}</Text>
@@ -23,11 +22,9 @@ const Input = (props) => {
 };
 
 Input.propTypes = {
-  props: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    onKeyStroke: PropTypes.func.isRequired,
-  }),
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onKeyStroke: PropTypes.func.isRequired,
 };
 
 const styles = StyleSheet.create({
